@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    color: gold;
+}
+
+h1{
+    color: gold;
+    font-size: 5em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+li{
+    margin-top: 40px;
+    color: gold;
+    list-style-type: none;
+    font-size: 2em;
+    cursor: pointer;
+    border: gold solid 1px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: gold 5px 5px 3px;
+}
+.ligne{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 20px auto;
+    font-size: 1.7em;
+}
+
+#main{
+    margin-top: 80px;
+}
+
+.classement{
+    display: flex;
+    justify-content: right;
+    /* border: gold solid 1px; */
+    width: 80px;
+}
+
+
