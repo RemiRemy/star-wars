@@ -36,12 +36,16 @@ li{
     display: flex;
     justify-content: space-between;
     width: 80vw;
-    margin: 20px auto;
+    margin: 20px ;
     font-size: 1.7em;
 }
 
 #main{
-    margin-top: 80px;
+    margin: 80px auto 20px auto;
+    border: gold 1.5px solid;
+    border-radius: 10px;
+    box-shadow: gold 5px 5px 5px 5px;
+    width: 90%;
 }
 
 .classement{
@@ -49,6 +53,17 @@ li{
     justify-content: right;
     /* border: gold solid 1px; */
     width: 80px;
+}
+
+.fas {
+    color: gold;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.suivant{
+    display: flex;
+    justify-content: space-around;
 }
 
 
