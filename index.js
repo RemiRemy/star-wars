@@ -5,6 +5,21 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
 $("#people").click(() =>{
     getListe("https://swapi.dev/api/people")
  })
+ $("#planet").click(() =>{
+    getListe("https://swapi.dev/api/planets")
+ })
+ $("#films").click(() =>{
+    getListe("https://swapi.dev/api/films")
+ })
+ $("#species").click(() =>{
+    getListe("https://swapi.dev/api/species")
+ })
+ $("#vehicles").click(() =>{
+    getListe("https://swapi.dev/api/vehicles")
+ })
+ $("#starships").click(() =>{
+    getListe("https://swapi.dev/api/starships")
+ })
 
 
  function getListe(url){
@@ -24,9 +39,10 @@ $("#people").click(() =>{
         let numPage = new URL(url).searchParams.get('page')||1
         console.log(numPage);
     let nb = (numPage-1)*10+1
+    
         for (let nom of data.results) {
             console.log(nom.name);
-            $("#main").html($("#main").html()+ '<div class="ligne">' + '<div class= "classement">'+ nb++ + " - " +'</div>' + '<div class="name">' +  nom.name +'</div>' + '</div>')
+            $("#main").html($("#main").html()+ '<div class="ligne" id="idligne '+  nb  + '">' + '<div class= "classement">'+ nb++ + " - " +'</div>' + '<div class="name">' +  nom.name +'</div>' + '</div>')
         }
         $("#main").css("border", "gold 1.5px solid").css("box-shadow", "gold 1px 5px 5px 2px")
         $(".suivant").html(suivant)
