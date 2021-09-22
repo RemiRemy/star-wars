@@ -1,4 +1,5 @@
 $("#main").css("border", "none").css("box-shadow", "none")
+// $("#detailId").css("border", "none").css("box-shadow", "none")
 $(".suivant").html("")
 let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i>'
 
@@ -25,7 +26,7 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
  function getListe(url){
     // data=> renvoie la réponse du serveur en gros les données contenu dans la page de l'url le plus souvent il s'agit de Json
     $.get(url, data=> {  
-     //   console.log(data);
+       console.log(data);
         /*
          console.log(data.name);
          $("#main").html('<div>'+data.results[1]+'</div>')
@@ -126,7 +127,7 @@ function getDetailPerso(url){
       tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
 
       tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
-      
+
       tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
 
       $('#detailId').html(tmpText)

@@ -71,4 +71,11 @@ li{
     justify-content: space-around;
 }
 
+#detailId{
+    margin: 80px auto 20px auto;
+    border: gold 1.5px solid;
+    border-radius: 10px;
+    box-shadow: gold 5px 5px 5px 5px;
+    width: 90%;
+}
 
