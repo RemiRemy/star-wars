@@ -1,4 +1,4 @@
-$("#main").css("border", "none").css("box-shadow", "none")
+// $("#main").css("border", "none").css("box-shadow", "none")
 // $("#detailId").css("border", "none").css("box-shadow", "none")
 $(".suivant").html("")
 let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i>'
@@ -64,6 +64,9 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
             getListe(data.previous)
          }
         })
+
+      
+
         $(".ligne").click((e)=>{
            // je déclare laurl pour récupérer l'evenement au click sur la ligne ou le nom et le numero du perso 
             let laurl = e.target.dataset.urlperso||e.target.parentElement.dataset.urlperso
@@ -76,8 +79,13 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
             let type = lePathName.split("/") // = ["", "api", "people", "1", ""]
             // ici type[2] permet de récuperer le 3e mot du tableau celui qui m'interesse
          //   console.log(type[2]);
+        
+
+         
+
             if(type[2] === "people") {
                getDetailPerso(laurl)
+               
             }
             if(type[2] === "planets") {
                getDetailPlanet(laurl)
@@ -89,12 +97,15 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
                getDetailSpecies(laurl)
             }
             if(type[2] === "vehicles") {
-               getDetailPerso(laurl)
+               getDetailVehicles(laurl)
             }
             if(type[2] === "starships") {
                getDetailStarships(laurl)
             }
-           
+            // permet d'envoyer directement sur la div des détails(plus précisement descend en bas de page) le setTimeout permet de laisser le temps au navigateur de charger les details à afficher avant de déplacer le scroll 
+            setTimeout(()=>{
+               window.scrollTo(0,document.body.clientHeight)
+            },100)
            })
         //    $.get('https://swapi.dev/api',(data)=>{
         //        console.log(data)
@@ -114,28 +125,38 @@ let suivant ='<i class="fas fa-arrow-left"></i><i class="fas fa-arrow-right"></i
 function getDetailPerso(url){
    $.get(url,(data)=>{
       console.log(data)
-      let tmpText ='<div class="detailNom" ><div class= "nom">Nom: </div><div class="name">' +  data.name +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      $("#detailId").css("border", "gold 1.5px solid").css("box-shadow", "gold 5px 5px 5px 5px")
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      let tmpText ='<div class="detailPerso" ><div class= "nom">Nom: </div><div class="name">' +  data.name +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      tmpText +='<div class="detailPerso" ><div class= "nom">Anniversaire: </div><div class="name">' +  data.birth_year +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      tmpText +='<div class="detailPerso" ><div class= "nom">taille: </div><div class="name">' +  data.mass +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      tmpText +='<div class="detailPerso" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      tmpText +='<div class="detailPerso" ><div class= "nom">Couleur de cheveux: </div><div class="name">' +  data.hair_color +'</div></div>'
 
-      tmpText +='<div class="detailNom" ><div class= "nom">Poids: </div><div class="name">' +  data.mass +'</div></div>'
+      tmpText +='<div class="detailPerso" ><div class= "nom">Couleur de peau: </div><div class="name">' +  data.skin_color +'</div></div>'
 
+      tmpText +='<div class="detailPerso" ><div class= "nom">Sexe: </div><div class="name">' +  data.gender +'</div></div>'
+
+      for(let i in data.species) {
+      tmpText +='<div class="detailPerso" ><div class= "nom">Race: </div><div class="name">' +  data.species[i] +'</div></div>'
+   }   
+     
+      for(let i in data.films)
+      {
+         tmpText +='<div class="detailPerso" ><div class= "nom">Film: </div><div class="name">' +  data.films[i] +'</div></div>'
+      }
+         // pour injecter dans ma div 
       $('#detailId').html(tmpText)
-   
-         console.log(data.name);
-         console.log(data.mass);
+      
+         // console.log(data.name);
+         // console.log(data.mass);
          // console.log(data.films);
-         console.log(data.birth_year);
+         // console.log(data.birth_year);
      
   })
 }
@@ -143,8 +164,34 @@ function getDetailPerso(url){
 function getDetailPlanet(url){
    $.get(url,(data)=>{
       console.log(url)
+      $("#detailId").css("border", "gold 1.5px solid").css("box-shadow", "gold 5px 5px 5px 5px")
+
+      let tmpText ='<div class="detailPerso" ><div class= "nom">Nom: </div><div class="name">' +  data.name +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Climat: </div><div class="name">' +  data.climate +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Terrain: </div><div class="name">' +  data.terrain +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Gravité: </div><div class="name">' +  data.gravity +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Population: </div><div class="name">' +  data.population +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Diamètre: </div><div class="name">' +  data.diameter +'</div></div>'
+
+      tmpText +='<div class="detailPerso" ><div class= "nom">Eau: </div><div class="name">' +  data.surface_water +'</div></div>'
+
+      for(let i in data.residents) {
+      tmpText +='<div class="detailPerso" ><div class= "nom">Habitants: </div><div class="name">' +  data.residents[i] +'</div></div>'
+   }   
+     
+     
+      $('#detailId').html(tmpText)
+     
   })
 }
+
+  
+
 
 function getDetailFilms(url){
    $.get(url,(data)=>{
@@ -169,3 +216,7 @@ function getDetailStarships(url){
       console.log(data)
   })
 }
+
+
+  
+ 

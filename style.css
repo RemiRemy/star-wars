@@ -73,9 +73,25 @@ li{
 
 #detailId{
     margin: 80px auto 20px auto;
-    border: gold 1.5px solid;
+    /* border: gold 1.5px solid; */
     border-radius: 10px;
-    box-shadow: gold 5px 5px 5px 5px;
+    /* box-shadow: gold 5px 5px 5px 5px; */
     width: 90%;
 }
 
+.detailPerso{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 20px ;
+    font-size: 1.7em;
+    cursor: pointer;
+}
+.detailPerso:hover{
+    background-color: gold;
+    color: black;
+}
+
+.nom{
+    margin-left: 40px;
+}
